@@ -1,0 +1,137 @@
+/* ESCUDO */
+.escudo {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 90px;
+  height: auto;
+  z-index: 1000;
+}
+
+/* TARJETA DE TEXTO */
+.contenido {
+  position: relative;
+  z-index: 5;
+  max-width: 800px;
+  margin: 120px auto 40px;
+  padding: 25px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0b2a55;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.contenido h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* CELULAR: texto solo en la parte blanca */
+@media (max-width: 600px) {
+  .contenido {
+    margin: 3vh 14px 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    max-height: 30vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .contenido h2 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .contenido p {
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: left;
+    margin: 0 0 6px;
+  }
+
+  .escudo {
+    width: 50px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 8px;
+  }
+}
+
+/* CELULAR: el título entra en el flujo de la página y la tarjeta queda
+   SIEMPRE debajo de él (antes se superponían) */
+@media (max-width: 600px) {
+  .pagina {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  .encabezado {
+    position: relative;
+    flex: 0 0 auto;
+    height: auto;
+    padding: 125px 12px 0;
+  }
+
+  .logo {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .logo h1 {
+    font-size: clamp(30px, 10vw, 44px);
+    letter-spacing: -1px;
+  }
+
+  .contenido {
+    flex: 0 1 auto;
+    margin: 22px 14px 0;
+    max-height: 34vh;
+  }
+}
+
+/* "VER MÁS": en el celular el segundo párrafo se corta y se despliega hacia abajo */
+.ver-mas {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .contenido .mas-texto {
+    display: none;
+  }
+
+  .contenido.expandido .mas-texto {
+    display: inline;
+  }
+
+  .contenido .mas-parrafo {
+    display: none;
+  }
+
+  .contenido.expandido .mas-parrafo {
+    display: block;
+  }
+
+  .contenido.expandido .puntos {
+    display: none;
+  }
+
+  .ver-mas {
+    display: inline;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #0b63c8;
+    font: inherit;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* al expandir, la tarjeta crece hacia abajo y se puede scrollear */
+  .contenido.expandido {
+    max-height: 60vh;
+  }
+}
